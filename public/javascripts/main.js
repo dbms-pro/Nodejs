@@ -1,15 +1,17 @@
-const form = document.getElementById('form');
-const password1El = document.getElementById('password1');
-const password2El = document.getElementById('password2');
-const messageContainer = document.querySelector('.message-container');
-const message = document.getElementById('message');
 
-let isValid = false;
-let passwordsMatch = false;
-
-function validateForm() {
+function validateForm(form, password1, password2, messageContainer, message) {
   // Use HTML constraint API to check form validity
-  isValid = form.checkValidity();
+  let isValid = false;
+  let passwordsMatch = false;
+
+  if (form !== null && form !== undefined) {
+    // Access the form object's properties here
+    isValid = form.checkValidity();
+  } else {
+    // Handle the case where the form object is null or undefined
+    return;
+  }
+
   // If the form isn't valid
   if (!isValid) {
     // Style main message for an error
@@ -19,19 +21,19 @@ function validateForm() {
     return;
   }
   // Check to see if both password fields match
-  if (password1El.value === password2El.value) {
+  if (password1.value === password2.value) {
     // If they match, set value to true and borders to green
     passwordsMatch = true;
-    password1El.style.borderColor = 'green';
-    password2El.style.borderColor = 'green';
+    password1.style.borderColor = 'green';
+    password2.style.borderColor = 'green';
   } else {
     // If they don't match, border color of input to red, change message
     passwordsMatch = false;
     message.textContent = 'Make sure passwords match.';
     message.style.color = 'red';
     messageContainer.style.borderColor = 'red';
-    password1El.style.borderColor = 'red';
-    password2El.style.borderColor = 'red';
+    password1.style.borderColor = 'red';
+    password2.style.borderColor = 'red';
     return;
   }
   // If form is valid and passwords match
@@ -43,24 +45,28 @@ function validateForm() {
   }
 }
 
- //for login validation
-/*function validate(){
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
-  if ( username == "Formget" && password == "formget#123"){
-  alert ("Login successfully");
-  window.location = "success.html"; // Redirecting to other page.
-  return false;
+function storeFormData(form) {
+  const user = {
+    name: form.name.value,
+    email: form.email.value,
+    password: form.password1.value,
+  };
+  // Do something with user data
+  console.log(user);
+}
+
+function processFormData(form, e) {
+  e.preventDefault();
+  // Validate Form
+  validateForm(form, password1, password2, messageContainer, message);
+  // Submit Form if Valid
+  if (isValid && passwordsMatch) {
+    storeFormData(form);
   }
-  else{
-  attempt --;// Decrementing by one.
-  alert("You have left "+attempt+" attempt;");
-  // Disabling fields after 3 attempts.
-  if( attempt == 0){
-  document.getElementById("username").disabled = true;
-  document.getElementById("password").disabled = true;
-  document.getElementById("submit").disabled = true;
-  return false;
-  }
-  }
-  }*/
+}
+
+module.exports = {
+  validateForm: validateForm,
+  storeFormData: storeFormData,
+  processFormData: processFormData,
+};
