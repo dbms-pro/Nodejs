@@ -1,120 +1,94 @@
 var express = require('express');
 var router = express.Router();
+var products = require('../recipes/product');
+let product = products.getProducts();
 const connection = require('../config/database');
-var formSubmit=require('../queries/users/login')
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  let product=[
 
-    {
-      name:"Biriyani",
-      images:"images/product-1.png",
-    },
-    {
-      name:"Kuzhimanthi",
-      images:"images/product-2.png",
-    }
-  
-  ]
   res.render('users/index',{product});
 });
-router.get('/recipe', function(req, res, next) {
-  let product=[
 
-    {
-      name:"Biriyani",
-      images:"images/product-1.png",
-    },
-    {
-      name:"Kuzhimanthi",
-      images:"images/product-2.png",
-    }
-  
-  ]
-   
+
+/* GET recipe page. */
+router.get('/recipe', function(req, res, next) {
+
   res.render('users/recipe',{product});
 });
+
+
+/* GET contact page. */
 router.get('/contact', function(req, res, next) {
   res.render('users/contact');
 });
+
+
+/* GET about page. */
 router.get('/about', function(req, res, next) {
   res.render('users/about');
 });
+
+
+/* GET login page. */
 router.get('/login', function(req, res, next) {
   res.render('users/login');
 });
+
+
+
 /* POST login page. */
-router.post('/submit', function(req, res) {
-console.log(req.body)
-let email = req.body.email;
-let names = req.body.names;
-let phone= req.body.phone;
-let password = req.body.password;
+router.post('/submit', (req, res) => {
+  const { names, email, password } = req.body;
 
-connection.query(
-  'SELECT * FROM registers WHERE email = ?',
-  [email],
-  (error, results) => {
-    if (error) throw error;
+  connection.query(
+    'SELECT * FROM registration WHERE Email = ?',
+    [email],
+    (error, results) => {
+      if (error) throw error;
 
-    if (results.length > 0) {
-      console.log('Email is already registered');
-      // Return an error or redirect the user to a different page here
-      res.send('alread');
+      if (results.length > 0) {
+        console.log('Email is already registered');
+        // Return an error or redirect the user to a different page here
+        res.send('alread');
+      } else {
+        const sql = 'INSERT INTO  registration (Name,Email,Password) VALUES ( ?, ?, ?)';
+        const values = [names, email, password];
+        connection.query(sql, values, (error, result) => {
+          if (error) throw error;
+          console.log(result.affectedRows + ' row(s) inserted');
+          res.send('got it');
+        });
+      }
     }
-    else{
-      const sql = 'INSERT INTO registers (Name,phone, email, password) VALUES (?, ?, ?, ?)';
-const values = [names,phone, email, password];
-connection.query(sql, values, (error, result) => {
-  if (error) throw error;
-  console.log(result.affectedRows + ' row(s) inserted');
-  res.send('got it')
-  
+  );
 });
 
-    }
-  }
- 
-);
 
-formSubmit.register(req.body);
-});
+/* GET logindex page. */
 router.get('/logindex', function(req, res, next) {
-  let product=[
 
-    {
-      name:"Biriyani",
-      images:"images/product-1.png",
-    },
-    {
-      name:"Kuzhimanthi",
-      images:"images/product-2.png",
-    }
-  
-  ]
   res.render('users/logindex',{product});
 });
-router.get('/logrecipe', function(req, res, next) {
-  let product=[
 
-    {
-      name:"Biriyani",
-      images:"images/product-1.png",
-    },
-    {
-      name:"Kuzhimanthi",
-      images:"images/product-2.png",
-    }
-  
-  ]
+
+/* GET logrecipe page. */
+router.get('/logrecipe', function(req, res, next) {
+
   res.render('users/logrecipe',{product});
 });
+
+
+/* GET logcontact page. */
 router.get('/logcontact', function(req, res, next) {
   res.render('users/logcontact');
 });
+
+
+/* GET logabout page. */
 router.get('/logabout', function(req, res, next) {
   res.render('users/logabout');
 });
+
 
 module.exports = router;
 
