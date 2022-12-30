@@ -3,8 +3,8 @@ var router = express.Router();
 var products = require('../recipes/product');
 let product = products.getProducts();
 const connection = require('../config/database');
-const { registerUser } = require('../queries/register');
-const { loginUser } = require('../queries/login');
+const { registerUser } = require('../queries/user/register');
+const { loginUser } = require('../queries/user/login');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

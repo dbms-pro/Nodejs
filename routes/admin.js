@@ -5,8 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('admin/index')
 });
-router.post('/add-recipe', function(req, res, next) {
-  console.logr(req.body)
-  console.log(req.files.mage)
+router.get('/add', function(req, res, next) {
+ res.render('admin/view')
 });
 module.exports = router;

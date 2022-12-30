@@ -1,4 +1,4 @@
-const connection = require('../config/database');
+const connection = require('../../config/database');
 function registerUser(req, res) {
     const { names, email, password1, password2 } = req.body;
   
