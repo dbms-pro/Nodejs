@@ -1,21 +1,19 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login</title>
   <link rel="stylesheet" href="/stylesheets/admin/adlog.css">
 </head>
 <body>
-  <form action="/submitadmin" method="post">
-  <label for="username">Username:</label><br>
-  <input type="text" id="username" name="username"><br>
-  <label for="password">Password:</label><br>
-  <input type="password" id="password" name="password"><br><br>
-  <input type="submit" value="Submit">
-</form> 
-<a href="/views"> link</a>
+  <h1>Admin Login</h1>
+  <form action="/adminlog" id="login-form" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <button type="submit">Login</button>
+  </form> 
+  <script src="/javascripts/admin/login.js"></script>
+  <script src="/routes/admin.js"></script>
 </body>
 </html>

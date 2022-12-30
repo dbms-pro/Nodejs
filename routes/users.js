@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var products = require('../recipes/product');
 let product = products.getProducts();
-const connection = require('../config/database');
 const { registerUser } = require('../queries/user/register');
 const { loginUser } = require('../queries/user/login');
 

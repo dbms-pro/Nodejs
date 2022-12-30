@@ -1,19 +1,32 @@
 <html>
-<head>
-  <title>Add</title>
-  <link rel='stylesheet' href='/stylesheets/admin/style.css' />
-</head>
-<body>Add</h1>
-  <form action="/add-recipe" method="post" enctype="multipart/form-data">
-    <label for="recipe-name">Recipe Name:</label><br>
-    <input type="text" id="recipe-name" name="recipe-name"><br>
-    <label for="ingredients">Ingredients:</label><br>
-    <textarea id="ingredients" name="ingredients"></textarea><br>
-    <label for="recipe">Recipe:</label><br>
-    <textarea id="recipe" name="recipe"></textarea><br>
-    <label for="image">Image:</label><br>
-    <input type="file" id="image" name="image"><br><br>
-    <input type="submit" value="Submit">
-  </form> 
-</body>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      .button {
+        display: block;
+        width: 150px;
+        padding: 10px;
+        margin: 10px auto;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .button:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User and Recipe management</h1>
+{{!--     <a href="/reci" class="button">Recipe Management</a> --}}
+ {{!--    <a href="/page2" class="button">User Management</a> --}}
+      <script src="/routes/admin.js"></script>
+  </body>
 </html>
