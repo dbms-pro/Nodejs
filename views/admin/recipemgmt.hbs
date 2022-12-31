@@ -1,68 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add and Remove recipe</title>
-    <style>
-        table {
-border-collapse: collapse;
-width: 100%;
-}
-
-th, td {
-text-align: left;
-padding: 8px;
-border-bottom: 1px solid #ddd;
-}
-
-tr:nth-child(even) {
-background-color: #f2f2f2;
-}
-
-img {
-height: 200px;
-width: 200px;
-object-fit: cover;
-}
-
-  .button {
-        display: block;
-        width: 150px;
-        padding: 10px;
-        margin: 10px auto;
-        border: none;
-        background-color: #4CAF50;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-      }
-button:hover {
-background-color: #45a049;
-}
-    </style>
+  <title>Recipe List</title>
 </head>
 <body>
-	<h1>Add and Remove recipe</h1>
-	<table>
-		<tr>
-			<th>Recipe Name</th>
-			<th>Ingredients</th>
-			<th>Image</th>
-			<th>Preparation</th>
-		</tr>
-		<tr>
-			<td>Spaghetti Bolognese</td>
-			<td>1 pound ground beef, 1 onion (chopped), 1 garlic clove (minced), 1 can diced tomatoes, 1 teaspoon dried oregano, 1 teaspoon dried basil, 1/2 teaspoon salt, 1/4 teaspoon black pepper, 1 pound spaghetti</td>
-			<td><img src="/images/product-1.png" style="image: resolution 2px;;" alt="Spaghetti Bolognese"></td>
-			<td>1. In a large pot, cook spaghetti according to package instructions. 2. In a separate pan, cook ground beef over medium heat until browned. 3. Add onion and garlic to the pan and cook until fragrant. 4. Add diced tomatoes, oregano, basil, salt, and pepper to the pan and stir to combine. 5. Reduce heat to low and let simmer for 15 minutes. 6. Serve sauce over cooked spaghetti.</td>
-		</tr>
-		<tr>
-			<td>Grilled Cheese Sandwich</td>
-			<td>2 slices bread, 2 slices cheese, 2 tablespoons butter</td>
-			<td><img src="/images/product-2.png" alt="Grilled Cheese Sandwich"></td>
-			<td>1. Heat a skillet over medium heat. 2. Spread butter on one side of each slice of bread. 3. Place one slice of bread, butter side down, in the skillet. 4. Add cheese on top of the bread. 5. Place the other slice of bread on top, butter side up. 6. Cook for 2-3 minutes on each side, or until bread is golden brown and cheese is melted. 7. Serve hot.</td>
-		</tr>
-	</table>
-	  <a href="/add" class="button">Add Recipe</a>
-       <script src="/routes/admin.js"></script>
+  <h1>Recipe List</h1>
+  <ul>
+  {{#each recipes}}
+      <li>
+        <h2>{{name}}</h2>
+        <p>{{ingredients}}</p>
+        <img src="{{image}}" alt="{{name}}">
+        <form action="/recipes/{{_id}}" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit">Delete</button>
+        </form>
+        <form action="/recipes/{{_id}}/edit" method="GET">
+          <button type="submit">Edit</button>
+        </form>
+      </li>
+    {{/each}}
+  </ul>
 </body>
 </html>
