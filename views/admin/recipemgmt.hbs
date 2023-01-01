@@ -1,25 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Recipe List</title>
+  <title>Recipe Table</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    i.fa-trash {
+      color: red;
+      cursor: pointer;
+    }
+    i.fa-edit {
+      color: green;
+      cursor: pointer;
+    }
+    .button {
+        display: block;
+        width: 150px;
+        padding: 10px;
+        margin: 10px auto;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+         position: absolute;
+         right: 20px;
+         top: 20px;
+      }
+  </style>
 </head>
 <body>
-  <h1>Recipe List</h1>
-  <ul>
-  {{#each recipes}}
-      <li>
-        <h2>{{name}}</h2>
-        <p>{{ingredients}}</p>
-        <img src="{{image}}" alt="{{name}}">
-        <form action="/recipes/{{_id}}" method="POST">
-          <input type="hidden" name="_method" value="DELETE">
-          <button type="submit">Delete</button>
-        </form>
-        <form action="/recipes/{{_id}}/edit" method="GET">
-          <button type="submit">Edit</button>
-        </form>
-      </li>
-    {{/each}}
-  </ul>
+
+  <h1>Recipe Table</h1>
+    <a href="/admin/add" class="button">Add Recipe</a><br><br>
+  <table>
+    <tr>
+      <th>Recipe Name</th>
+      <th>Recipe</th>
+      <th>Ingredients</th>
+      <th>Image</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Spaghetti Carbonara</td>
+      <td>
+        1. Cook spaghetti according to package instructions.<br>
+        2. In a separate pan, cook pancetta or bacon over medium heat until crispy. Remove from pan and set aside.<br>
+        3. In a small bowl, whisk together eggs and Parmesan cheese.<br>
+        4. Drain spaghetti, reserving 1 cup of the pasta water. Return spaghetti to the pot.<br>
+        5. Pour egg mixture over spaghetti and toss to coat. Add reserved pasta water, 1/4 cup at a time, until the sauce has reached desired consistency.<br>
+        6. Stir in pancetta or bacon. Serve immediately.
+      </td>
+      <td>
+        - spaghetti noodles<br>
+        - 4 eggs<br>
+        - 1/2 cup grated Parmesan cheese<br>
+        - 1/2 cup pancetta or bacon, diced
+      </td>
+      <td><img width="300" height="200" src="/images/carousel-1.jpg" alt="Spaghetti Carbonara"></td>
+      <td><a href="#"><i class="fa fa-edit"></i></a></td>
+      <td><a href="#"><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </table>
 </body>
 </html>

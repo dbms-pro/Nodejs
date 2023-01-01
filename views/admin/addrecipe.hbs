@@ -1,16 +1,16 @@
 <html>
 <head>
-  <title>Add Product</title>
+  <title>Add Recipe</title>
   <link rel='stylesheet' href='/stylesheets/admin/style.css' />
 </head>
-<body>Add Product</h1>
+<body><h1>Add Recipe</h1>
   <form action="/add-recipe" method="post" enctype="multipart/form-data">
-    <label for="recipe-name">Recipe Name:</label><br>
-    <input type="text" id="recipe-name" name="recipe-name"><br>
+    <label for="recipe_name">Recipe Name:</label><br>
+    <input type="text" id="recipe_name" name="recipe_name"><br>
+     <label for="recipe">Recipe:</label><br>
+    <textarea id="recipe" name="recipe"></textarea><br>
     <label for="ingredients">Ingredients:</label><br>
     <textarea id="ingredients" name="ingredients"></textarea><br>
-    <label for="recipe">Recipe:</label><br>
-    <textarea id="recipe" name="recipe"></textarea><br>
     <label for="image">Image:</label><br>
     <input type="file" id="image" name="image"><br><br>
     <input type="submit" value="Submit">
