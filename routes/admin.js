@@ -4,9 +4,6 @@ var router = express.Router();
 const bodyParser = require('body-parser');
 const user=require('../queries/admin/user');
 const fs = require('fs');
-
-/* const {addRecipe }= require('../queries/admin/add_recipe'); */
-/* const {deleteRecipe }= require('../queries/admin/deleterecipe'); */
 // parse application/x-www-form-urlencoded
 router.use(bodyParser.urlencoded({ extended: false }));
 const recip =require('../queries/admin/recipeview');
@@ -44,13 +41,12 @@ router.get('/add', function(req, res, next) {
   
   res.render('admin/addrecipe');
 });
-/* router.post('/add_recipe', addRecipe);
 router.get('/users', function(req, res, next) {
   user.getUsers((error, results) => {
     if (error) throw error;
     res.render('admin/userview', {results: results});
   });
-}); */
+})
 router.post('/add_recipe', upload.single('image'), (req, res) => {
   // Read the image file from the request and store it in the database
   const data = fs.readFileSync(req.file.path);
@@ -81,7 +77,7 @@ router.get('/view_image/:id', (req, res) => {
 });
 
 /* router.post('/admin/deleterecipe/:id', deleteRecipe); */
-router.get('/admin/recipemgmt/delete/:id',function(req,res,next){
+/* router.get('/admin/recipemgmt/delete/:id',function(req,res,next){
   var id = req.params.id;
 var query = `DELETE FROM recipe WHERE ID = ${id}`;
 connection.query(query,function(error,data){
@@ -92,7 +88,7 @@ connection.query(query,function(error,data){
     res.redirect("/admin/recipemgmt");
   }
 });
-});
+}); */
 
 
 

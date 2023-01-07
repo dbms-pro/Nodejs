@@ -33,7 +33,7 @@
     </div>
     <!-- Hero End -->
 
-
+{{!-- 
     <!-- Products Start -->
     <div class="container-fluid py-5">
         <div class="container">
@@ -61,5 +61,35 @@
             </div>
         </div>
     </div>
-    <!-- Products End -->   
+    <!-- Products End -->    --}}
+{{!--       {{#each recipe}}
+    <div class="card">
+  <img class="card-img-top" src="/admin/view_image/{{image_id}}" alt="{{recipe_name}}" width="100" height="100" />
+  <div class="card-body">
+    <h5 class="card-title">{{recipe_name}}</h5>
+    <p class="card-text">{{ingredients}}</p>
+  </div>
+</div>
+{{/each}} --}}
+<section>
+    <div class="container mt-5">
+        <div class="row">
+                {{#each recipe}}
+            <div class="col-md-3">
+<div class="card" style="width: 18rem;">
+  <img  class="card-img-top" src="/view_image/{{image_id}}" alt="{{recipe_name}} width="200" height="200"">
+  <div class="card-body">
+    <h5 class="card-title">{{recipe_name}}</h5>
+    <p class="card-text">{{ingredients}}</p>
+    <a href="/login" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div>
+   {{/each}}  
+        </div>
+    </div>
+</section>
+
+
+
    <script src="javascripts/home.js"></script>

@@ -20,9 +20,9 @@
                 <a href="/logabout" class="nav-item nav-link">About</a>
                 <a href="/logcontact" class="nav-item nav-link">Contact</a>
             </div>
-            <div class="login">
+            {{!-- <div class="login">
                 <a style="border-radius: 5%;border-color:  rgb(32, 197, 112);"class="btn btn-primary" href="/" role="button">Add Item</a>
-            </div>
+            </div> --}}
         </div>
     </nav>
     <!-- Navbar End -->
@@ -41,7 +41,7 @@
     <!-- Hero End -->
 
 
-    <!-- Products Start -->
+   {{!--  <!-- Products Start -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="mx-auto text-center mb-5" style="max-width: 500px;">
@@ -67,7 +67,25 @@
             </div>
         </div>
     </div>
-    <!-- Products End -->   
+    <!-- Products End -->    --}}
+    <section>
+    <div class="container mt-5">
+        <div class="row">
+                {{#each recipe}}
+            <div class="col-md-3">
+<div class="card" style="width: 18rem;">
+  <img  class="card-img-top" src="/view_image/{{image_id}}" alt="{{recipe_name}} width="200" height="200"">
+  <div class="card-body">
+    <h5 class="card-title">{{recipe_name}}</h5>
+    <p class="card-text">{{ingredients}}</p>
+    <a href="/singleview/{{ID}}" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div>
+   {{/each}}  
+        </div>
+    </div>
+</section>
 
     
        <script src="javascripts/home.js"></script>

@@ -1,0 +1,59 @@
+
+
+
+    <!-- Navbar Start -->
+   
+<!doctype html>
+<html>
+  <head>
+    <title>Page</title>
+    <style>
+        body {
+  font-family: sans-serif;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+h3 {
+  color: #333;
+  text-align: center;
+}
+p {
+  color: #555;
+  font-size: 18px;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+  </head>
+  <body>
+     <nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
+        <a href="index.hbs" class="navbar-brand d-flex d-lg-none">
+            <h1 class="m-0 display-4 text-secondary"><span class="text-white">Endure</span>Recipe</h1>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            
+        </div>
+    </nav>
+
+    <h1>{{recipe_name}}</h1>
+    <h3>Ingredients</h3>
+    <p >{{ingredients}}</p>
+    <h3>Recipe</h3>
+    <p >{{recipe}}</p>
+<img src="/view_image/{{image_id}}" alt="{{recipe_name}}"  />
+
+  </body>
+</html>
