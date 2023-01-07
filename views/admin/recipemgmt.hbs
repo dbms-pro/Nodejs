@@ -50,6 +50,7 @@
       <th>Recipe Name</th>
       <th>Ingredients</th>
       <th>Recipe</th>
+      <th>Images</th>
     </tr>
     </tr>
   {{#each recipe}}
@@ -57,11 +58,10 @@
     <td>{{recipe_name}}</td>
    <td>{{ingredients}}</td>
    <td>{{recipe}}</td>
-       <td>
-     <form method="post" action="/admin/deleterecipe/{{id}}">
-       <button type="submit"><i class="fa fa-times"></i></button>
-     </form>
-   </td>
+    <td>
+      <img src="/admin/view_image/{{image_id}}" alt="{{recipe_name}}" width="100" height="100" />
+
+    </td>
   </tr>
   {{/each}}
   </table>

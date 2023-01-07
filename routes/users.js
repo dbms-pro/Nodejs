@@ -1,19 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var products = require('../recipes/product');
-let product = products.getProducts();
+/* var products = require('../recipes/product');
+let product = products.getProducts(); */
 const { registerUser } = require('../queries/user/register');
 const { loginUser } = require('../queries/user/login');
+const {recipeview} =require('../queries/admin/recipeview');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('users/index',{product});
+  res.render('users/index',{recipeview});
 });
 
 
 /* GET recipe page. */
 router.get('/recipe', function(req, res, next) {
-  res.render('users/recipe',{product});
+  res.render('users/recipe',{recipeview});
 });
 
 
@@ -45,13 +46,13 @@ router.post('/loginto', loginUser);
 
 /* GET logindex page. */
 router.get('/logindex', function(req, res, next) {
-  res.render('users/logindex',{product});
+  res.render('users/logindex',{recipeview});
 });
 
 
 /* GET logrecipe page. */
 router.get('/logrecipe', function(req, res, next) {
-  res.render('users/logrecipe',{product});
+  res.render('users/logrecipe',{recipeview});
 });
 
 
