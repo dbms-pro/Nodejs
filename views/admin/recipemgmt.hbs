@@ -44,35 +44,27 @@
 
   <h1>Recipe Table</h1>
     <a href="/admin/add" class="button">Add Recipe</a><br><br>
-  <table>
+  
+    <table>
     <tr>
       <th>Recipe Name</th>
-      <th>Recipe</th>
       <th>Ingredients</th>
-      <th>Image</th>
-      <th></th>
-      <th></th>
+      <th>Recipe</th>
     </tr>
-    <tr>
-      <td>Spaghetti Carbonara</td>
-      <td>
-        1. Cook spaghetti according to package instructions.<br>
-        2. In a separate pan, cook pancetta or bacon over medium heat until crispy. Remove from pan and set aside.<br>
-        3. In a small bowl, whisk together eggs and Parmesan cheese.<br>
-        4. Drain spaghetti, reserving 1 cup of the pasta water. Return spaghetti to the pot.<br>
-        5. Pour egg mixture over spaghetti and toss to coat. Add reserved pasta water, 1/4 cup at a time, until the sauce has reached desired consistency.<br>
-        6. Stir in pancetta or bacon. Serve immediately.
-      </td>
-      <td>
-        - spaghetti noodles<br>
-        - 4 eggs<br>
-        - 1/2 cup grated Parmesan cheese<br>
-        - 1/2 cup pancetta or bacon, diced
-      </td>
-      <td><img width="300" height="200" src="/images/carousel-1.jpg" alt="Spaghetti Carbonara"></td>
-      <td><a href="#"><i class="fa fa-edit"></i></a></td>
-      <td><a href="#"><i class="fa fa-trash"></i></a></td>
     </tr>
+  {{#each recipe}}
+  <tr>
+    <td>{{recipe_name}}</td>
+   <td>{{ingredients}}</td>
+   <td>{{recipe}}</td>
+       <td>
+     <form method="post" action="/admin/deleterecipe/{{id}}">
+       <button type="submit"><i class="fa fa-times"></i></button>
+     </form>
+   </td>
+  </tr>
+  {{/each}}
   </table>
+
 </body>
 </html>

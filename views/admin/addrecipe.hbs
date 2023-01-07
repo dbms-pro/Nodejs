@@ -4,16 +4,16 @@
   <link rel='stylesheet' href='/stylesheets/admin/style.css' />
 </head>
 <body><h1>Add Recipe</h1>
-  <form action="/add_recipe" method="post" enctype="multipart/form-data">
+  <form action="/admin/add_recipe" method="post" >
     <label for="recipeName">Recipe Name:</label><br>
     <input type="text" id="recipeName" name="recipeName"><br>
     <label for="ingredients">Ingredients:</label><br>
-    <textarea id="ingredients" name="ingredients"></textarea><br>
+    <textarea  id="ingredients" name="ingredients"></textarea><br>
         <label for="recipe">Recipe:</label><br>
     <textarea id="recipe" name="recipe"></textarea><br>
   {{!--   <label for="image">Image:</label><br>
     <input type="file" id="image" name="image"><br><br> --}}
     <input type="submit" value="Submit">
   </form> 
-      
+
 </html>

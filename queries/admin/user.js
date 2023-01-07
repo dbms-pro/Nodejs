@@ -18,7 +18,8 @@ function getUsers(callback) {
     });
   }
   
+  
   module.exports = {
     deleteUser: deleteUser,
-    getUsers: getUsers
+    getUsers: getUsers,
   };
