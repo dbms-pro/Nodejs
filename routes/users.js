@@ -6,7 +6,10 @@ const start = require('../queries/user/recipeviewu');
 const connection = require('../config/database');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('users/index');
+  start.recipeviewu((error, recipe) => {
+    if (error) throw error;
+  res.render('users/index', {recipe: recipe});
+});
 });
 
 
@@ -49,12 +52,18 @@ router.post('/loginto', loginUser);
 
 /* GET logindex page. */
 router.get('/logindex', function(req, res, next) {
-  res.render('users/logindex',{recipeview});
+  start.recipeviewu((error, recipe) => {
+    if (error) throw error;
+    res.render('users/logindex', {recipe: recipe});
+  });
 });
 
 router.get('/singleview', function(req, res, next) {
-
-  res.render('users/singleview');
+  start.recipeviewu((error, recipe) => {
+    if (error) throw error;
+    res.render('users/singleview', {recipe: recipe});
+  });
+  
 });
 /* GET logrecipe page. */
 router.get('/logrecipe', function(req, res, next) {
@@ -87,13 +96,11 @@ router.get('/view_image/:id', (req, res) => {
     res.send(results[0].data);
   });
 
-  router.get('/singleview/:id', (req, res) => {
-    const id = req.params.id;
-    // Fetch the recipe from the database using the ID
-/*     const recipe = db.getRecipeById(id); */
-    const recipe=start.recipeviewu(id);
-    // Render the singleview template and pass the recipe data to the template
-    res.render('users/singleview', { recipe: recipe });
-  });
+
+  
+ 
+  
+
+  
   
 });module.exports = router;

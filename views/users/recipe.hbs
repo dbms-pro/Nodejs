@@ -19,68 +19,16 @@
         </div>
     </nav>
     <!-- Navbar End -->
-
-
-    <!-- Hero Start -->
-    <div class="container-fluid bg-primary py-5 bg-hero mb-5">
-        <div class="container py-5">
-            <div class="row justify-content-start">
-                <div class="col-lg-8 text-center text-lg-start">
-                    <h1 class="display-1 text-white mb-md-4">Our Recipes</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Hero End -->
-
-{{!-- 
-    <!-- Products Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="mx-auto text-center mb-5" style="max-width: 500px;">
-                <h6 class="text-primary text-uppercase">Recipes</h6>
-                <h1 class="display-5">Checkout Our New Recipes</h1>
-                <div  class="serch">
-                    <form  class="form-inline">
-                        <input  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"><br>
-                        <button class="btn btn-outline-secondary" type="button">Search</button>
-                      </form>
-                </div>
-            </div>
-         
-            <div class="owl-carousel product-carousel px-5">
-                      {{#each product }}
-                <div class="pb-5">
-                    <div class="product-item position-relative bg-white d-flex flex-column text-center">
-                        <img class="img-fluid mb-4" src={{this.images}} alt="">
-                        <h6 class="mb-3">{{this.name}}</h6>
-                        <button class="btn btn-outline-secondary" type="button">View</button>
-                    </div>
-                </div>
-                  {{/each}}
-            </div>
-        </div>
-    </div>
-    <!-- Products End -->    --}}
-{{!--       {{#each recipe}}
-    <div class="card">
-  <img class="card-img-top" src="/admin/view_image/{{image_id}}" alt="{{recipe_name}}" width="100" height="100" />
-  <div class="card-body">
-    <h5 class="card-title">{{recipe_name}}</h5>
-    <p class="card-text">{{ingredients}}</p>
-  </div>
-</div>
-{{/each}} --}}
 <section>
     <div class="container mt-5">
         <div class="row">
                 {{#each recipe}}
-            <div class="col-md-3">
+               <div class="col-md-3 mb-4">
 <div class="card" style="width: 18rem;">
   <img  class="card-img-top" src="/view_image/{{image_id}}" alt="{{recipe_name}} width="200" height="200"">
   <div class="card-body">
     <h5 class="card-title">{{recipe_name}}</h5>
-    <p class="card-text">{{ingredients}}</p>
+    {{!-- <p class="card-text">{{ingredients}}</p> --}}
     <a href="/login" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
@@ -89,7 +37,3 @@
         </div>
     </div>
 </section>
-
-
-
-   <script src="javascripts/home.js"></script>

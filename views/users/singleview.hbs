@@ -1,59 +1,73 @@
 
-
-
-    <!-- Navbar Start -->
-   
 <!doctype html>
 <html>
   <head>
     <title>Page</title>
     <style>
         body {
-  font-family: sans-serif;
-}
-
-h1 {
-  color: #333;
-  text-align: center;
-}
-h3 {
-  color: #333;
-  text-align: center;
-}
-p {
-  color: #555;
-  font-size: 18px;
-  text-align: center;
-}
-
-img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  display: block;
-  margin: 20px auto;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
+          font-family: sans-serif;
+        }
+        
+        h1 {
+          color: #333;
+          text-align: center;
+        }
+        
+        h3 {
+          color: #333;
+          text-align: center;
+        }
+        
+        p {
+          color: #555;
+          font-size: 18px;
+          text-align: center;
+        }
+        
+        img {
+          width: 100%;
+          max-width: 400px;
+          height: auto;
+          display: block;
+          margin: 20px auto;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
     </style>
   </head>
   <body>
      <nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
-        <a href="index.hbs" class="navbar-brand d-flex d-lg-none">
+        <a href="logindex.hbs" class="navbar-brand d-flex d-lg-none">
             <h1 class="m-0 display-4 text-secondary"><span class="text-white">Endure</span>Recipe</h1>
         </a>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             
         </div>
-    </nav>
+     </nav>
+    <section>
+    <div class="container mt-5">
+        <div class="row">
+                {{#each recipe}}
+         <div class="col-md-3 mb-4">
+<div class="card" style="width: 18rem;">
+  <img style="width: 200px;height: 200px;" class="card-img-top" src="/view_image/{{image_id}}" alt="{{recipe_name}}">
+  <div class="card-body">
+    <h5 class="card-title">{{recipe_name}}</h5>
+    <h6>ingredients</h6>
+    <p class="card-text">{{ingredients}}</p>
+    <h6>Recipe</h6>
+    <p class="card-text">{{recipe}}</p>
+{{!--     <a href="/login" class="btn btn-primary">Go somewhere</a> --}}
+  </div>
+</div>
+</div>
+   {{/each}}  
+        </div>
+    </div>
+</section>
 
-    <h1>{{recipe_name}}</h1>
-    <h3>Ingredients</h3>
-    <p >{{ingredients}}</p>
-    <h3>Recipe</h3>
-    <p >{{recipe}}</p>
-<img src="/view_image/{{image_id}}" alt="{{recipe_name}}"  />
+{{!-- <img src="/view_image/{{ singleview.image_id }}" alt="{{ singleview.recipe_name }}" /> --}}
+
 
   </body>
 </html>
