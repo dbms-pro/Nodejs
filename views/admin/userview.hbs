@@ -28,23 +28,16 @@
 </head>
 <body>
   <h1>User Table</h1>
-{{!--   <button onclick="addUser()">Add User</button> --}}
   <table>
     <tr>
       <th>Username</th>
       <th>Verified</th>
-      {{!-- <th>Delete</th> --}}
     </tr>
     </tr>
   {{#each results}}
   <tr>
     <td>{{Email}}</td>
     <td><a href="#"><i class="fa fa-check"></i></a></td>
-   {{!--  <td>
-      <form method="DELETE" action="/users/{{Email}}">
-        <button type="submit"><i class="fa fa-times"></i></button>
-      </form>
-    </td> --}}
   </tr>
   {{/each}}
   </table>
