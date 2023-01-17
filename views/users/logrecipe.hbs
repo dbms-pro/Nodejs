@@ -3,7 +3,7 @@
     <!-- Topbar Start -->
 
     <!-- Topbar End -->
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
@@ -72,8 +72,29 @@
   <a href="/singleview">
     <button class="btn btn-outline-secondary" type="button">View recipes</button>
   </a>
-</div>
-    <section>
+</div><!-- Add this to the head of the HTML file -->
+
+
+<!-- Define the recipe template -->
+<script id="recipe-template" type="text/x-handlebars-template">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>{{recipe_name}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <img  class="card-img-top" src="/view_image/{{image_id}}" alt="{{recipe_name}}" width="200" height="200">
+                        <p class="card-text">{{ingredients}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<section>
     <div class="container mt-5">
         <div class="row">
                 {{#each recipe}}
@@ -83,12 +104,34 @@
   <div class="card-body">
     <h5 class="card-title">{{recipe_name}}</h5>
   {{!--   <p class="card-text">{{ingredients}}</p> --}}
-{{!--     <a href="/singleview" class="btn btn-primary">Go somewhere</a> --}}
+<a href="#" onclick="getRecipe({{ID}})" class="btn btn-primary">Go somewhere</a>
+
   </div>
 </div>
 </div>
    {{/each}}  
+       
+ 
         </div>
     </div>
+<script>
+    const axios = require('axios');
+
+function getRecipe(ID) {
+    // Fetch recipe data from the server
+    axios.get(`/get_recipe/${ID}`)
+    .then(response => {
+        // Compile the handlebars template
+        var template = Handlebars.compile(recipeTemplate);
+        // Render the template with the recipe data
+        var html = template(response.data);
+        // Insert the rendered HTML into the page
+        document.querySelector('#recipe-container').innerHTML = html;
+    }).catch(error => {
+        console.log(error);
+    });
+}
+
+</script>
 </section>
 

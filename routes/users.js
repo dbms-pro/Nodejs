@@ -6,9 +6,9 @@ const start = require('../queries/user/recipeviewu');
 const connection = require('../config/database');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  start.recipeviewu((error, recipe) => {
+  start.recipeviewu((error, data) => {
     if (error) throw error;
-  res.render('users/index', {recipe: recipe});
+  res.render('users/index', {recipe: data});
 });
 });
 
@@ -16,9 +16,9 @@ router.get('/', function(req, res, next) {
 /* GET recipe page. */
 
 router.get('/recipe', function(req, res, next) {
-  start.recipeviewu((error, recipe) => {
+  start.recipeviewu((error, data) => {
     if (error) throw error;
-    res.render('users/recipe', {recipe: recipe});
+    res.render('users/recipe', {recipe: data});
   });
   
 });
@@ -52,24 +52,24 @@ router.post('/loginto', loginUser);
 
 /* GET logindex page. */
 router.get('/logindex', function(req, res, next) {
-  start.recipeviewu((error, recipe) => {
+  start.recipeviewu((error, data) => {
     if (error) throw error;
-    res.render('users/logindex', {recipe: recipe});
+    res.render('users/logindex', {recipe: data});
   });
 });
 
 router.get('/singleview', function(req, res, next) {
-  start.recipeviewu((error, recipe) => {
+  start.recipeviewu((error, data) => {
     if (error) throw error;
-    res.render('users/singleview', {recipe: recipe});
+    res.render('users/singleview', {recipe: data});
   });
   
 });
 /* GET logrecipe page. */
 router.get('/logrecipe', function(req, res, next) {
-  start.recipeviewu((error, recipe) => {
+  start.recipeviewu((error, data) => {
     if (error) throw error;
-    res.render('users/logrecipe', {recipe: recipe});
+    res.render('users/logrecipe', {recipe: data});
   });
   
 });
@@ -96,11 +96,20 @@ router.get('/view_image/:id', (req, res) => {
     res.send(results[0].data);
   });
 
+});
+
+router.get('/recipesss/:id', (req, res) => {
+  // code to fetch data from database 
+  const sql ='SELECT * FROM recipe WHERE ID = ?';
+  connection.query(sql, [req.params.id], (error, results) => {
+      if (error) throw error;
+      res.setHeader('Content-Type', 'application/json');
+res.send(results[0],data);
+
+  });
+  
 
   
- 
   
-
-  
-  
-});module.exports = router;
+});
+module.exports = router;

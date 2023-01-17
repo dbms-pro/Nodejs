@@ -5,51 +5,19 @@
     --light: #F6FFF2;
     --dark: #263A4F;
 }
-
 .btn {
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
     font-weight: 700;
-    transition: .5s;
+    transition: .4s;
     
-}
+} 
 
 .btn-primary,
 .btn-secondary {
-    color: #FFFFFF;
+    color:whitesmoke;
 }
 
-.btn-square {
-    width: 36px;
-    height: 36px;
-}
-
-.btn-sm-square {
-    width: 28px;
-    height: 28px;
-}
-
-.btn-lg-square {
-    width: 46px;
-    height: 46px;
-}
-
-.btn-square,
-.btn-sm-square,
-.btn-lg-square {
-    padding-left: 0;
-    padding-right: 0;
-    text-align: center;
-}
-
-.back-to-top {
-    position: fixed;
-    display: none;
-    right: 30px;
-    bottom: 0;
-    border-radius: 0;
-    z-index: 99;
-}
 
 .navbar-dark .navbar-nav .nav-link {
     padding: 30px 15px;
@@ -99,7 +67,7 @@
 }
 
 .bg-hero {
-    background: url(../img/carousel-1.jpg) top right no-repeat;
+    background: url(../images/carousel-1.jpg) top right no-repeat;
     background-size: cover;
 }
 
@@ -110,17 +78,6 @@
         z-index: 1;
     }
 }
-
-.bg-vegetable {
-    background: linear-gradient(#142d34, #142d34), url(../img/vegetable.png) bottom right no-repeat;
-    background-size: contain;
-}
-
-.bg-fruit {
-    background: linear-gradient(rgba(255, 153, 51, .2), rgba(255, 153, 51, .2)), url(../img/fruit.png) bottom right no-repeat;
-    background-size: contain;
-}
-
 
 .product-item {
     padding: 0 30px 30px 30px;
@@ -155,7 +112,7 @@
     height: 55%;
     bottom: 0;
     left: 0;
-    background: url(../img/bg-product-1.png) left bottom no-repeat, url(../img/bg-product-2.png) right bottom no-repeat;
+
     background-size: contain;
     background-color: var(--primary);
     z-index: -1;
@@ -188,7 +145,7 @@
 }
 
 .bg-testimonial {
-    background: url(../img/testimonial.jpg) top center no-repeat;
+    background: url(../images/testimonial.jpg) top center no-repeat;
     background-size: cover;
 }
 
@@ -229,10 +186,6 @@
 .testimonial-carousel .owl-item img {
     width: 120px;
     height: 120px;
-}
-.bg-footer {
-    background: linear-gradient(#142d34, #142d34), url(../img/footer.png) center bottom no-repeat;
-    background-size: contain;
 }
 .register {
     margin: auto;
